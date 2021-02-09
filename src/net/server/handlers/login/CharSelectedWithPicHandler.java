@@ -70,8 +70,8 @@ public class CharSelectedWithPicHandler extends AbstractMaplePacketHandler {
                 c.announce(MaplePacketCreator.getAfterLoginError(10));
                 return;
             }
-            
-            String[] socket = server.getInetSocket(c.getWorld(), c.getChannel());
+
+            String[] socket = server.getInetSocket(session, c.getWorld(), c.getChannel());
             if(socket == null) {
                 c.announce(MaplePacketCreator.getAfterLoginError(10));
                 return;

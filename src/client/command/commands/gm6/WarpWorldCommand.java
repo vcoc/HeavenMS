@@ -49,12 +49,12 @@ public class WarpWorldCommand extends Command {
         byte worldb = Byte.parseByte(params[0]);
         if (worldb <= (server.getWorldsSize() - 1)) {
             try {
-                String[] socket = server.getInetSocket(worldb, c.getChannel());
+                String[] socket = server.getInetSocket(c.getSession(), worldb, c.getChannel());
                 c.getWorldServer().removePlayer(player);
-                player.getMap().removePlayer(player);//LOL FORGOT THIS ><
+                player.getMap().removePlayer(player);
                 player.setSessionTransitionState();
                 player.setWorld(worldb);
-                player.saveCharToDB();//To set the new world :O (true because else 2 player instances are created, one in both worlds)
+                player.saveCharToDB();  // To set the new world :O (true because else 2 player instances are created, one in both worlds)
                 c.announce(MaplePacketCreator.getChannelChange(InetAddress.getByName(socket[0]), Integer.parseInt(socket[1])));
             } catch (UnknownHostException | NumberFormatException ex) {
                 ex.printStackTrace();

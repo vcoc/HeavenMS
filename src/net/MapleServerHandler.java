@@ -110,9 +110,11 @@ public class MapleServerHandler extends IoHandlerAdapter {
         String remoteHost;
         try {
             remoteHost = ((InetSocketAddress) session.getRemoteAddress()).getAddress().getHostAddress();
-            
+
             if (remoteHost == null) {
                 remoteHost = "null";
+            } else {
+                remoteHost = MapleSessionCoordinator.fetchRemoteAddress(remoteHost);   // thanks dyz for noticing Local/LAN/WAN connections not interacting properly
             }
         } catch (NullPointerException npe) {    // thanks Agassy, Alchemist for pointing out possibility of remoteHost = null.
             remoteHost = "null";

@@ -43,7 +43,8 @@ public class ServerConfig {
 
     //Ip Configuration
     public String HOST;
-    public boolean LOCALSERVER;
+    public String LANHOST;
+    public String LOCALHOST;
     public boolean GMSERVER;
 
     //Other configuration
